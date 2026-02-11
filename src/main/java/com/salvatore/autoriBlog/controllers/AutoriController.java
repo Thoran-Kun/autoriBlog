@@ -3,7 +3,6 @@ package com.salvatore.autoriBlog.controllers;
 import com.salvatore.autoriBlog.entities.Autore;
 import com.salvatore.autoriBlog.payloads.NewAutorePayload;
 import com.salvatore.autoriBlog.services.AutoriService;
-// IMPORT CORRETTO: Deve essere org.springframework.data.domain
 import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

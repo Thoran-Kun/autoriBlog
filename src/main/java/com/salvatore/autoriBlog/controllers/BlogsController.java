@@ -4,6 +4,7 @@ import com.salvatore.autoriBlog.entities.Blog;
 import com.salvatore.autoriBlog.payloads.NewBlogPayload;
 import com.salvatore.autoriBlog.services.BlogsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +22,12 @@ private final BlogsService blogsService;
     }
 
     @GetMapping
-    public List<Blog> findAll(){
-    return this.blogsService.findAll();
+    public Page<Blog> findAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "nome") String orderBy
+    ){
+    return this.blogsService.findAll(page, size, orderBy);
     }
 
     @PostMapping
