@@ -24,8 +24,6 @@ public class Autore {
     private String avatar;
 
     public Autore(String nome, String cognome, String email, String dataDiNascita) {
-        Random rndm = new Random();
-        this.id = rndm.nextInt(1, 1000);
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;

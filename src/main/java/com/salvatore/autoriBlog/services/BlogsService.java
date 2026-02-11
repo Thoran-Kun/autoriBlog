@@ -69,7 +69,7 @@ public class BlogsService {
         found.setTempoDiLettura(payload.getTempoDiLettura());
 
         // Se nel payload cambia anche l'autore, aggiorniamo anche quello
-        Autore nuovoAutore = autoriService.findById(payload.getAuthorId());
+        Autore nuovoAutore = autoriService.findById(payload.getAutoreId());
         found.setAutore(nuovoAutore);
 
         return this.blogRepository.save(found);
