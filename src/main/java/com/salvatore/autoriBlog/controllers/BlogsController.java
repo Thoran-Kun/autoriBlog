@@ -1,0 +1,50 @@
+package com.salvatore.autoriBlog.controllers;
+
+import com.salvatore.autoriBlog.entities.Blog;
+import com.salvatore.autoriBlog.payloads.NewBlogPayload;
+import com.salvatore.autoriBlog.services.BlogsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/blogs")
+public class BlogsController {
+
+private final BlogsService blogsService;
+
+@Autowired
+    public BlogsController(BlogsService blogsService) {
+        this.blogsService = blogsService;
+    }
+
+    @GetMapping
+    public List<Blog> findAll(){
+    return this.blogsService.findAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Blog createBlog(@RequestBody NewBlogPayload payload){
+    return this.blogsService.saveBlog(payload);
+    }
+
+    @GetMapping("/{blogId}")
+    public Blog getBlogById(@PathVariable long blogId){
+    return this.blogsService.findById(blogId);
+    }
+
+    @PutMapping("/{blogId}")
+    public Blog getBlogByIdAndUpdate(@PathVariable long blogId, @RequestBody NewBlogPayload payload){
+    return this.blogsService.findByIdAndUpdate(blogId, payload);
+    }
+
+    @DeleteMapping("/{blogId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void getBlogIdAndDelete(@PathVariable long blogId) {
+    this.blogsService.findByIdAndDelete(blogId);
+    }
+}
+
