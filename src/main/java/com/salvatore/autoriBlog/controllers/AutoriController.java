@@ -23,9 +23,9 @@ public class AutoriController {
     public Page<Autore> findAll(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "nome") String orderBy
-    ){
-        return this.autoriService.findAll(page, size, orderBy);
+            @RequestParam(defaultValue = "nome") String orderBy,
+            @RequestParam(defaultValue = "asc") String sortCriteria){
+        return this.autoriService.findAll(page, size, orderBy, sortCriteria);
     }
 
     @PostMapping
